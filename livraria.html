@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html ng-app="livraria">
+	<head>
+	<meta charset="utf-8">
+	<title>Livraria</title>
+
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js" ></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!--script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.0.js"></script--> 
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<script src="js/LivrariaController.js"></script>
+	<!--script src="js/controllers/ModalController.js"></script-->
+
+	</head>
+	<body ng-controller="LivrariaController as livrariaCtrl">
+		<div class="page-header">
+		  <h1>Livraria</h1>
+		</div>
+		<div class="row">
+		  <div class="col-sm-6 col-md-4" ng-repeat="livro in livrariaCtrl.db">
+		    <div class="thumbnail">
+		      <img src="">
+		      <div class="caption">
+		        <h3>{{ livro.titulo }}</h3>
+		        <p>{{ livro.descricao }}</p>
+		        <p>
+		        	<a href="#" class="btn btn-primary" role="button" ng-click="livrariaCtrl.comentar($index)">Comentar</a>
+		         	<a href="#" class="btn btn-default" role="button" ng-click="livrariaCtrl.editar($index)">Editar</a>
+		         	<button ng-click="livrariaCtrl.criar()">testando</button>
+		         </p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</body>
+</html>
