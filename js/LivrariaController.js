@@ -124,12 +124,13 @@
 
 		this.save = function() {
 			self.novoLivro.autores = [self.novoLivro.autores];
-			self.db.push(angular.copy(self.novoLivro));
+
 			$http.post("/book", self.novoLivro)
 			.then(function(response) {
-
 				alert("Livro registrado com sucesso.");
-				//self.db.add(livro)
+				self.db.push(angular.copy(self.novoLivro));
+				console.log(self.db)
+				$scope.cancel();
 			},
 			function(error){
 				alert("Nao foi possivel salvar o livro.")
@@ -137,15 +138,34 @@
 		}
 		
 		this.update = function () {
-
+			$http.put("/book/" + self.novoLivro.titulo, self.novoLivro)
+			.then(function(response) {
+				alert("Livro atualizado com sucesso.");
+				self.db.push(angular.copy(self.novoLivro));
+			},
+			function(error){
+				alert("Nao foi possivel atualizar o livro.")
+			});
 		}	
 
 		this.getBook = function (titulo) {
-
+			$http.get("/book/" + self.novoLivro.titulo)
+			.then(function(response) {
+				self.novoLivro = response.data;
+			},
+			function(error){
+				alert("Nao foi recuperar o livro " + self.novoLivro.titulo + ".")
+			});
 		}  
 
 		this.getBooks = function () {
-
+			$http.get("/book")
+			.then(function(response) {
+				self.db = response.data;
+			},
+			function(error){
+				alert("Nao foi recuperar a livraria.");
+			});
 		}
 	}]);
 })();
