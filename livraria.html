@@ -20,21 +20,38 @@
 
 	</head>
 	<body ng-controller="LivrariaController as livrariaCtrl">
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid pull-right">
+		    <ul class="nav navbar-nav">
+		      <li ng-click="livrariaCtrl.criar()"><a href="#">Novo <img src="static/book.png" height="32" width="32"> </a></li>
+		      <li><a href="#/carrinho"> Minhas compras <img src="static/carrinho.jpg" height="32" width="32"> </a></li>
+		    </ul>
+		  </div>
+		</nav>
 		<div class="page-header">
-		  <h1>Livraria</h1>
+		  <h1 align="center">Livraria</h1>
 		</div>
 		<div class="row">
 		  <div class="col-sm-6 col-md-4" ng-repeat="livro in livrariaCtrl.db">
 		    <div class="thumbnail">
-		      <img src="">
+		      <img src="{{livro.book.url_capa}}" height="300" width="140">
 		      <div class="caption">
-		        <h3>{{ livro.titulo }}</h3>
-		        <p>{{ livro.descricao }}</p>
-		        <p>
-		        	<a href="#" class="btn btn-primary" role="button" ng-click="livrariaCtrl.comentar($index)">Comentar</a>
+		        <h3>{{ livro.book.titulo }}</h3>
+		        <p>{{ livro.book.descricao }}</p>
+		        <p align="right">
 		         	<a href="#" class="btn btn-default" role="button" ng-click="livrariaCtrl.editar($index)">Editar</a>
-		         	<a href="#" class="btn btn-default" role="button" ng-click="livrariaCtrl.criar()">Novo</a>
+		         	<button class="btn btn-default" ng-click="livrariaCtrl.addAoCarrinho($index)">
+    					 <img src="static/buy.png" width="20"/> Comprar
+					</button>
 		         </p>
+		         <div>
+		         	<input type="text" size="46" ng-model="livrariaCtrl.comentario[$index]">
+		         	<a href="#" class="btn btn-primary pull-right" role="button" ng-click="livrariaCtrl.comentar($index)">Comentar</a>
+		         </div>
+		         <h4>Comentarios</h4>
+		         <div ng-repeat="comentario in livro.book.comentarios track by $index">
+		         	<p> {{comentario}}</p>
+		         </div>
 		      </div>
 		    </div>
 		  </div>

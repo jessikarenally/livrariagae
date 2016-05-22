@@ -5,77 +5,89 @@
 		var self = this;
 
 		self.novoLivro;
+
+		self.comentario = [];
 		
-		self.db = [
+		self.ddb = [
 			{
 				titulo: "O mínimo que você precisa saber para não ser um idiota",
 				autores: ["Olavo de Carvalho"],
 				descricao: "Escritos entre 1997 e 2013 e publicados em diferentes jornais e revistas do país, os 193 textos aqui selecionados esmiúçam os fatos do cotidiano – as notícias, o que nelas fica subentendido, ou que delas passa omitido – para afinal destrinchar, sem dó, a mentalidade brasileira e sua progressiva inclinação pelo torpor e pela incompreensão. Há tempos...",
-				url_capa: "https://www.google.com.br/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjanbmD3MPLAhXKgJAKHZbhD8QQjRwIBw&url=http%3A%2F%2Fveja.abril.com.br%2Fblog%2Freinaldo%2Fgeral%2Fo-minimo-que-voce-precisa-saber-para-nao-ser-um-idiota%2F&psig=AFQjCNF0C1AezPvlAHbHjwwRtYIvY88s6Q&ust=1458166594528311",
-				preco: 45.50
+				url_capa: "http://veja.abril.com.br/blog/reinaldo/files/2013/09/capa-do-livro-olavo.jpg",
+				preco: 45.50,
+				comentarios: ['bom', 'inteligente', 'incrivel']
 			},
 			{
 				titulo: "O Senhor dos aneis - A sociedade do anel (primeiro livro)",
 				autores: ["J. R. R. Tolkien"],
 				descricao: "Escritos entre 1997 e 2013 e publicados em diferentes jornais e revistas do país, os 193 textos aqui selecionados esmiúçam os fatos do cotidiano – as notícias, o que nelas fica subentendido, ou que delas passa omitido – para afinal destrinchar, sem dó, a mentalidade brasileira e sua progressiva inclinação pelo torpor e pela incompreensão. Há tempos...",
-				url_capa: "http://www.google.com.br/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjanbmD3MPLAhXKgJAKHZbhD8QQjRwIBw&url=http%3A%2F%2Fveja.abril.com.br%2Fblog%2Freinaldo%2Fgeral%2Fo-minimo-que-voce-precisa-saber-para-nao-ser-um-idiota%2F&psig=AFQjCNF0C1AezPvlAHbHjwwRtYIvY88s6Q&ust=1458166594528311",
-				preco: 45.50
+				url_capa: "http://imgc.allpostersimages.com/images/P-473-488-90/55/5580/F13VG00Z/posters/o-senhor-dos-aneis-1-a-sociedade-do-anel.jpg",
+				preco: 45.50,
+				comentarios: []
 			},
 			{
 				titulo: "O Senhor dos aneis - As Duas Torres (segundo livro)         .",
 				autores: ["J. R. R. Tolkien"],
 				descricao: "Escritos entre 1997 e 2013 e publicados em diferentes jornais e revistas do país, os 193 textos aqui selecionados esmiúçam os fatos do cotidiano – as notícias, o que nelas fica subentendido, ou que delas passa omitido – para afinal destrinchar, sem dó, a mentalidade brasileira e sua progressiva inclinação pelo torpor e pela incompreensão. Há tempos...",
-				url_capa: "http://www.google.com.br/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjanbmD3MPLAhXKgJAKHZbhD8QQjRwIBw&url=http%3A%2F%2Fveja.abril.com.br%2Fblog%2Freinaldo%2Fgeral%2Fo-minimo-que-voce-precisa-saber-para-nao-ser-um-idiota%2F&psig=AFQjCNF0C1AezPvlAHbHjwwRtYIvY88s6Q&ust=1458166594528311",
-				preco: 45.50
+				url_capa: "http://portal.julund.com.br/wp-content/uploads/2014/01/LOTR-duas-torres.jpg",
+				preco: 45.50,
+				comentarios: []
 			},
 			{
 				titulo: "O Senhor dos aneis - O retorno do Rei (terceiro livro)     ",
 				autores: ["J. R. R. Tolkien"],
 				descricao: "Escritos entre 1997 e 2013 e publicados em diferentes jornais e revistas do país, os 193 textos aqui selecionados esmiúçam os fatos do cotidiano – as notícias, o que nelas fica subentendido, ou que delas passa omitido – para afinal destrinchar, sem dó, a mentalidade brasileira e sua progressiva inclinação pelo torpor e pela incompreensão. Há tempos...",
-				url_capa: "http://www.google.com.br/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjanbmD3MPLAhXKgJAKHZbhD8QQjRwIBw&url=http%3A%2F%2Fveja.abril.com.br%2Fblog%2Freinaldo%2Fgeral%2Fo-minimo-que-voce-precisa-saber-para-nao-ser-um-idiota%2F&psig=AFQjCNF0C1AezPvlAHbHjwwRtYIvY88s6Q&ust=1458166594528311",
-				preco: 45.50
+				url_capa: "static/book.png",
+				preco: 45.50,
+				comentarios: []
 			},
 			{
 				titulo: "O hobbit - Uma Jornada Inesperada (primeiro livro)         ",
 				autores: ["J. R. R. Tolkien"],
 				descricao: "Escritos entre 1997 e 2013 e publicados em diferentes jornais e revistas do país, os 193 textos aqui selecionados esmiúçam os fatos do cotidiano – as notícias, o que nelas fica subentendido, ou que delas passa omitido – para afinal destrinchar, sem dó, a mentalidade brasileira e sua progressiva inclinação pelo torpor e pela incompreensão. Há tempos...",
-				url_capa: "http://www.google.com.br/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjanbmD3MPLAhXKgJAKHZbhD8QQjRwIBw&url=http%3A%2F%2Fveja.abril.com.br%2Fblog%2Freinaldo%2Fgeral%2Fo-minimo-que-voce-precisa-saber-para-nao-ser-um-idiota%2F&psig=AFQjCNF0C1AezPvlAHbHjwwRtYIvY88s6Q&ust=1458166594528311",
-				preco: 45.50
+				url_capa: "static/book.png",
+				preco: 45.50,
+				comentarios: []
 			},
 			{
 				titulo: "O hobbit - A Desolação de Smaug (segundo livro)         ",
 				autores: ["J. R. R. Tolkien"],
 				descricao: "Escritos entre 1997 e 2013 e publicados em diferentes jornais e revistas do país, os 193 textos aqui selecionados esmiúçam os fatos do cotidiano – as notícias, o que nelas fica subentendido, ou que delas passa omitido – para afinal destrinchar, sem dó, a mentalidade brasileira e sua progressiva inclinação pelo torpor e pela incompreensão. Há tempos...",
-				url_capa: "http://www.google.com.br/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjanbmD3MPLAhXKgJAKHZbhD8QQjRwIBw&url=http%3A%2F%2Fveja.abril.com.br%2Fblog%2Freinaldo%2Fgeral%2Fo-minimo-que-voce-precisa-saber-para-nao-ser-um-idiota%2F&psig=AFQjCNF0C1AezPvlAHbHjwwRtYIvY88s6Q&ust=1458166594528311",
-				preco: 45.50
+				url_capa: "static/book.png",
+				preco: 45.50,
+				comentarios: []
 			},
 			{
 				titulo: "O hobbit -  A Batalha dos Cinco Exércitos (terceiro livro)",
 				autores: ["J. R. R. Tolkien"],
 				descricao: "Escritos entre 1997 e 2013 e publicados em diferentes jornais e revistas do país, os 193 textos aqui selecionados esmiúçam os fatos do cotidiano – as notícias, o que nelas fica subentendido, ou que delas passa omitido – para afinal destrinchar, sem dó, a mentalidade brasileira e sua progressiva inclinação pelo torpor e pela incompreensão. Há tempos...",
-				url_capa: "http://www.google.com.br/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjanbmD3MPLAhXKgJAKHZbhD8QQjRwIBw&url=http%3A%2F%2Fveja.abril.com.br%2Fblog%2Freinaldo%2Fgeral%2Fo-minimo-que-voce-precisa-saber-para-nao-ser-um-idiota%2F&psig=AFQjCNF0C1AezPvlAHbHjwwRtYIvY88s6Q&ust=1458166594528311",
-				preco: 45.50
+				url_capa: "static/book.png",
+				preco: 45.50,
+				comentarios: []
 			},
 			{
 				titulo: "O hobbit - Uma Jornada Inesperada (primeiro livro)",
 				autores: ["J. R. R. Tolkien"],
 				descricao: "Escritos entre 1997 e 2013 e publicados em diferentes jornais e revistas do país, os 193 textos aqui selecionados esmiúçam os fatos do cotidiano – as notícias, o que nelas fica subentendido, ou que delas passa omitido – para afinal destrinchar, sem dó, a mentalidade brasileira e sua progressiva inclinação pelo torpor e pela incompreensão. Há tempos...",
-				url_capa: "http://www.google.com.br/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjanbmD3MPLAhXKgJAKHZbhD8QQjRwIBw&url=http%3A%2F%2Fveja.abril.com.br%2Fblog%2Freinaldo%2Fgeral%2Fo-minimo-que-voce-precisa-saber-para-nao-ser-um-idiota%2F&psig=AFQjCNF0C1AezPvlAHbHjwwRtYIvY88s6Q&ust=1458166594528311",
-				preco: 45.50
+				url_capa: "static/book.png",
+				preco: 45.50,
+				comentarios: []
 			},
 			{
 				titulo: "O hobbit - A Desolação de Smaug (segundo livro)",
 				autores: ["J. R. R. Tolkien"],
 				descricao: "Escritos entre 1997 e 2013 e publicados em diferentes jornais e revistas do país, os 193 textos aqui selecionados esmiúçam os fatos do cotidiano – as notícias, o que nelas fica subentendido, ou que delas passa omitido – para afinal destrinchar, sem dó, a mentalidade brasileira e sua progressiva inclinação pelo torpor e pela incompreensão. Há tempos...",
-				url_capa: "http://www.google.com.br/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjanbmD3MPLAhXKgJAKHZbhD8QQjRwIBw&url=http%3A%2F%2Fveja.abril.com.br%2Fblog%2Freinaldo%2Fgeral%2Fo-minimo-que-voce-precisa-saber-para-nao-ser-um-idiota%2F&psig=AFQjCNF0C1AezPvlAHbHjwwRtYIvY88s6Q&ust=1458166594528311",
-				preco: 45.50
+				url_capa: "static/book.png",
+				preco: 45.50,
+				comentarios: []
 			},
 			{
 				titulo: "O hobbit -  A Batalha dos Cinco Exércitos (terceiro livro)",
 				autores: ["J. R. R. Tolkien"],
 				descricao: "Escritos entre 1997 e 2013 e publicados em diferentes jornais e revistas do país, os 193 textos aqui selecionados esmiúçam os fatos do cotidiano – as notícias, o que nelas fica subentendido, ou que delas passa omitido – para afinal destrinchar, sem dó, a mentalidade brasileira e sua progressiva inclinação pelo torpor e pela incompreensão. Há tempos...",
-				url_capa: "http://www.google.com.br/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjanbmD3MPLAhXKgJAKHZbhD8QQjRwIBw&url=http%3A%2F%2Fveja.abril.com.br%2Fblog%2Freinaldo%2Fgeral%2Fo-minimo-que-voce-precisa-saber-para-nao-ser-um-idiota%2F&psig=AFQjCNF0C1AezPvlAHbHjwwRtYIvY88s6Q&ust=1458166594528311",
-				preco: 45.50
+				url_capa: "static/book.png",
+				preco: 45.50,
+				comentarios: []
 			}
 		];
 
@@ -124,6 +136,7 @@
 
 		this.save = function() {
 			self.novoLivro.autores = [self.novoLivro.autores];
+			self.novoLivro.comentarios = []; 
 
 			$http.post("/book", self.novoLivro)
 			.then(function(response) {
@@ -135,18 +148,18 @@
 			function(error){
 				alert("Nao foi possivel salvar o livro.")
 			});
-		}
+		};
 		
-		this.update = function () {
-			$http.put("/book/" + self.novoLivro.titulo, self.novoLivro)
+		this.update = function (livroPraAtualizar) {
+			var livro = livroPraAtualizar ||  self.novoLivro;
+			$http.put("/book/" + livro.book.titulo, livro.book)
 			.then(function(response) {
 				alert("Livro atualizado com sucesso.");
-				self.db.push(angular.copy(self.novoLivro));
 			},
 			function(error){
 				alert("Nao foi possivel atualizar o livro.")
 			});
-		}	
+		};	
 
 		this.getBook = function (titulo) {
 			$http.get("/book/" + self.novoLivro.titulo)
@@ -156,7 +169,7 @@
 			function(error){
 				alert("Nao foi recuperar o livro " + self.novoLivro.titulo + ".")
 			});
-		}  
+		};  
 
 		this.getBooks = function () {
 			$http.get("/book")
@@ -166,6 +179,19 @@
 			function(error){
 				alert("Nao foi recuperar a livraria.");
 			});
-		}
+		};
+
+		this.comentar = function(indice){
+			if (self.db[indice].book.comentarios == undefined){
+				self.db[indice].book.comentarios = [];
+			}
+			self.db[indice].book.comentarios.push(self.comentario[indice]);
+			self.update(self.db[indice]);
+			self.comentario[indice] = "";
+		};
+
+		(function main(){
+			self.getBooks();
+		})();
 	}]);
 })();
