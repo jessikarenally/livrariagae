@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML5 Login</title>
+	<link rel="stylesheet" href="static/normalize.css">
+	<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+	<section class="loginform cf">
+		<form name="login" action="index_submit" method="get" accept-charset="utf-8">
+			<ul>
+				<li>
+					<label for="usermail">Email</label>
+					<input type="login" name="usermail" placeholder="login" required>
+				</li>
+				<li>
+					<label for="password">Password</label>
+					<input type="password" name="password" placeholder="password" required></li>
+				<li>
+					<input type="submit" ng-click="login()" value="Login">
+					<input type="submit" ng-click="register()" value="Register">
+				</li>
+			</ul>
+		</form>
+	</section>
+</body>
+</html>

@@ -29,7 +29,7 @@ def book_unicode_to_str(book):
     for key in book.keys():
         print cgi.escape(key)
         temp[cgi.escape(key)] = (book[key])
-    print "oooooasajsaksjaksa", temp.titulo
+
     for i in range(len(temp['autores'])):
         temp['autores'][i] = cgi.escape(temp['autores'][i])
 
@@ -52,6 +52,9 @@ class Book(ndb.Model):
         book = {"titulo": self.titulo, "autores": self.autores, "descricao": self.descricao, "url_capa": self.url_capa, "preco": self.preco}
         return book
 
+class Carrinho(ndb.Model):
+    livros = ndb.IntegerProperty(repeated = True)
+        
 class MainPage(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENVIRONMENT.get_template('livraria.html')
@@ -62,14 +65,37 @@ class LoginHandler(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('login.html')
         self.response.write(template.render({}))
 
+class CarrinhoHandler(webapp2.RequestHandler):
+    
+    def get(self):
+        books = Book.query()
+
+        for book in books:
+            book.key.delete()
+        #template = JINJA_ENVIRONMENT.get_template('carrinho.html')
+        #self.response.write(template.render({}))
+
+    def put(self):
+        carrinho = Carrinho.query().get()
+        livro = json.loads(self.request.body)
+        chave = cgi.escape(livro.keys()[0])
+        if carrinho:
+            carrinho.livros.append(livro[chave])
+            carrinho.put()
+        else:
+            carrinho = Carrinho()
+            carrinho.livros = [1]
+            carrinho.put()
+
+
 class BookHandler(webapp2.RequestHandler):
     def get(self, titulo):
         book = Book.query(Book.titulo == titulo).get()
         self.response.write(simplejson.dumps(book.to_dict()))
 
-    def put(self, titulo):
+    def put(self, id):
         new_book = json.loads(self.request.body)
-        book_on_db = Book.query(Book.titulo == titulo).get() 
+        book_on_db = Book.get_by_id(int(id))
 
         temp = {}
         for key in new_book.keys():
@@ -100,7 +126,7 @@ class LibraryHandler(webapp2.RequestHandler):
         
         data = []
         for b in books:
-            book = {"titulo": b.titulo, "autores": b.autores, "descricao": b.descricao, "url_capa": b.url_capa,"preco": b.preco, "comentarios": b.comentarios}
+            book = {"id": b.key.id(), "titulo": b.titulo, "autores": b.autores, "descricao": b.descricao, "url_capa": b.url_capa,"preco": b.preco, "comentarios": b.comentarios}
             data.append({"book": book})
         self.response.write(data2json(data))
 
@@ -127,5 +153,6 @@ app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/book', LibraryHandler),
     ('/book/(.*)', BookHandler),
-    ('/login', LoginHandler)
+    ('/login', LoginHandler),
+    ('/carrinho', CarrinhoHandler)
 ], debug=True)
